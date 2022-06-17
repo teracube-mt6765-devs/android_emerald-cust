@@ -16,3 +16,6 @@ endif
 # APN configuration
 PRODUCT_COPY_FILES += \
     $(EMERALD_CUST_PATH)/telephony/apns-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
+
+# Apps
+PRODUCT_PACKAGES += TeracubeCamera
