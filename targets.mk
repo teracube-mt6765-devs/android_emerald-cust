@@ -8,7 +8,12 @@ EMERALD_CUST_PATH := emerald-cust
 $(warn "Compiling inline with the emerald-cust package.")
 
 ifneq ($(LINEAGE_BUILD),)
-$(warn "Adding OTA overrides for LineageOS")
+$(warn "Adding overrides for LineageOS")
+ifeq ($(WITH_GMS),true)
+GAPPS_ARCH := arm64
+GAPPS_PATH := vendor/gapps
+include $(GAPPS_PATH)/$(GAPPS_ARCH)/$(GAPPS_ARCH)-vendor.mk
+endif
 # Set OTA property for emerald target.
 ifeq ($(PRODUCT_DEVICE),emerald)
 PRODUCT_PROPERTY_OVERRIDES += lineageos.updater.uri=https://raw.githubusercontent.com/teracube-mt6765-devs/releases/master/los11-emerald.json
