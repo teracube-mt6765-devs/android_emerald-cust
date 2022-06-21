@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 '''
 Copyright (C) 2022 Gagan Malvi
 
@@ -22,22 +23,20 @@ tree_json = "trees.json"
 
 def return_json_object(json_file):
     try:
-        with open(json_file) as f:
-            return json.load(f)
+        return json.load(open(json_file))
     except:
         print("Error: Unable to open json file")
         exit(1)
 
 def clone_trees(tree_object):
-    tree_nodes = tree_object.keys()
-    for node in tree_nodes:
+    for (node, value) in tree_object.items():
         git_cmd = "git clone "
-        git_cmd += tree_object[node]["url"] + " "
-        git_cmd += root_dir + tree_object[node]["path"] + " "
-        if ("branch" in tree_object[node]):
-            git_cmd += "--branch " + tree_object[node]["branch"] + " "
-        if ("depth" in tree_object[node]):
-            git_cmd += "--depth=" + str(tree_object[node]["depth"])
+        git_cmd += value["url"] + " "
+        git_cmd += root_dir + value["path"] + " "
+        if ("branch" in value):
+            git_cmd += "--branch " + value["branch"] + " "
+        if ("depth" in value):
+            git_cmd += "--depth=" + str(value["depth"])
         print("Cloning " + node + " tree...")
         os.system(git_cmd)
 
