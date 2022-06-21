@@ -1,0 +1,26 @@
+{
+    "branch": "lineage-19.1",
+    "fallback_branch": "lineage-18.1",
+    "organization": "teracube",
+    "github_organization": "teracube-mt6765-devs",
+    "codename": "emerald",
+    "script_desc": "A JSON file to store details of device trees in the format device/vendor/board, and such. For example vendor xyz, by default, the script assumes device/xyz/board, vendor/xyz/board. For additional arguments, pass it into the trees format with an element.",
+    "clone_sepolicy": true,
+    "custom_kernel": true,
+    "uses_prebuilt_kernel": false,
+    "is_vendorless": false,
+    "platform": "mediatek",
+    "additional_trees": {
+        "kernel": {
+            "url": "https://github.com/arcadia-oss/emerald",
+            "path": "kernel/teracube/emerald",
+            "branch": "emerald-s-oss"
+        },
+        "gms": {
+            "url": "https://gitlab.com/MindTheGapps/vendor_gapps",
+            "path": "vendor/gapps",
+            "branch": "sigma",
+            "depth": 1
+        }
+    }
+}
